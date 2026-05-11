@@ -1,4 +1,4 @@
-module github.com/astrocode-id/go-flaresolverr
+module github.com/AlexVasiluta/go-flaresolverr
 
 go 1.19
 
