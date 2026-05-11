@@ -164,6 +164,7 @@ type GetParams struct {
 	MaxTimeout        int
 	Cookies           Cookies
 	ReturnOnlyCookies bool
+	Headers           map[string]string
 }
 
 // Get requests web page with method http.Get and returns Solution.Response as raw bytes.
@@ -197,6 +198,7 @@ func (c *Client) GetRaw(p GetParams) (Response, error) {
 		MaxTimeout:        timeout,
 		Cookies:           p.Cookies,
 		ReturnOnlyCookies: p.ReturnOnlyCookies,
+		Headers:           p.Headers,
 	})
 	if err != nil {
 		return Response{}, err
@@ -212,6 +214,7 @@ type PostParams struct {
 	MaxTimeout        int
 	Cookies           Cookies
 	ReturnOnlyCookies bool
+	Headers           map[string]string
 }
 
 // Post requests web page with method http.Post and returns Solution.Response as raw bytes.
@@ -242,6 +245,7 @@ func (c *Client) PostRaw(p PostParams) (Response, error) {
 		MaxTimeout:        timeout,
 		Cookies:           p.Cookies,
 		ReturnOnlyCookies: p.ReturnOnlyCookies,
+		Headers:           p.Headers,
 	})
 	if err != nil {
 		return Response{}, err
@@ -257,6 +261,7 @@ type requestParams struct {
 	MaxTimeout        int     `json:"maxTimeout,omitempty"`
 	Cookies           Cookies `json:"cookies,omitempty"`
 	ReturnOnlyCookies bool    `json:"returnOnlyCookies,omitempty"`
+	Headers 		  map[string]string `json:"headers,omitempty"`
 }
 
 func (c *Client) requestURL(cmd []byte) (Response, error) {
